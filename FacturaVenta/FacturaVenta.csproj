@@ -46,8 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionDB.cs" />
-    <Compile Include="DataAccessLayer.cs" />
+    <Compile Include="CB_Sales.cs" />
+    <Compile Include="CD_Sales.cs" />
+    <Compile Include="DBConnection.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

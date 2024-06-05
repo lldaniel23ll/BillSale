@@ -1,0 +1,16 @@
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\BusinessLayer.AssemblyInfo.cs
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\BusinessLayer.sourcelink.json
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\bin\Debug\net7.0\BusinessLayer.deps.json
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\bin\Debug\net7.0\BusinessLayer.dll
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\bin\Debug\net7.0\BusinessLayer.pdb
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\bin\Debug\net7.0\DataLayer.dll
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\bin\Debug\net7.0\DataLayer.pdb
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\Business.EA331CBA.Up2Date
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\BusinessLayer.dll
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\refint\BusinessLayer.dll
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\BusinessLayer.pdb
+C:\Users\danij\Documents\Visual Studio 2022\BillSale\BusinessLayer\obj\Debug\net7.0\ref\BusinessLayer.dll
