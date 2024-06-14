@@ -10,7 +10,7 @@ namespace FacturaVenta
 {
     internal class DBConnection
     {
-        private SqlConnection connection = new SqlConnection("Server=(local);Database=SalesInvoice;Integrated Security=True;");
+        private SqlConnection connection = new SqlConnection("Server=(local);Database=ALMACENACCESORIOSBD;Integrated Security=True;");
         public SqlConnection openConnection()
         {
             if (connection.State == ConnectionState.Closed)

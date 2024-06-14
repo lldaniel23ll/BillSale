@@ -96,9 +96,19 @@ namespace FacturaVenta
                         MessageBox.Show("La celda de fecha está vacía o no contiene un valor válido.");
                 }
                 txtConcept1.Text = dataGridView1.CurrentRow.Cells["Concepto"].Value.ToString();
+                
                 txtQuantity1.Text = dataGridView1.CurrentRow.Cells["Cantidad"].Value.ToString();
                 txtPrice1.Text = dataGridView1.CurrentRow.Cells["Precio"].Value.ToString();
-                comboBox1.Text = dataGridView1.CurrentRow.Cells["Estado"].Value.ToString();
+                try
+                {
+                    comboBox1.Text = dataGridView1.CurrentRow.Cells["Estado"].Value.ToString();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                
                 idSale = dataGridView1.CurrentRow.Cells["ID"].Value.ToString();
             }
             else
