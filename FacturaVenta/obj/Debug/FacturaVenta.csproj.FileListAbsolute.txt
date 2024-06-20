@@ -18,3 +18,20 @@ C:\Users\danij\Documents\Visual Studio 2022\BillSale\FacturaVenta\obj\Debug\Fact
 C:\Users\danij\Documents\Visual Studio 2022\BillSale\FacturaVenta\obj\Debug\FacturaVenta.csproj.CoreCompileInputs.cache
 C:\Users\danij\Documents\Visual Studio 2022\BillSale\FacturaVenta\obj\Debug\FacturaVenta.exe
 C:\Users\danij\Documents\Visual Studio 2022\BillSale\FacturaVenta\obj\Debug\FacturaVenta.pdb
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\FacturaVenta.exe.config
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\FacturaVenta.exe
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\FacturaVenta.pdb
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaVenta.csproj.AssemblyReference.cache
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaVenta.Form1.resources
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaVenta.Properties.Resources.resources
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaVenta.csproj.GenerateResource.cache
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaVenta.csproj.CoreCompileInputs.cache
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaVenta.exe
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaVenta.pdb
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaVenta.Report.resources
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\itextsharp.dll
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\itextsharp.xml
+C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaV.FD043D26.Up2Date

@@ -29,5 +29,11 @@ namespace FacturaVenta
         {
             objectCD.Delete(Convert.ToInt32(ID));
         }
+        public DataTable searchSales(string No)
+        {
+            DataTable table = new DataTable();
+            table = objectCD.Search(No);
+            return table;
+        }
     }
 }

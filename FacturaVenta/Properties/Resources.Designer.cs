@@ -69,5 +69,33 @@ namespace FacturaVenta.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
+        ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        ///    &lt;title&gt;Tabla de factura de ventas&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        /* Estilo del encabezado de la tabla */
+        ///        th {
+        ///            background-color: #f0f0f0;
+        ///            font-weight: bold;
+        ///        }
+        ///    &lt;/style&gt;
+        ///&lt;/head&gt;
+        ///
+        ///&lt;body&gt;
+        ///    &lt;table style=&quot;width:100%; border-collapse: collapse;&quot;&gt;
+        ///        &lt;tr&gt;
+        ///            &lt;td style=&quot;text-align:center; border:  [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string pdf {
+            get {
+                return ResourceManager.GetString("pdf", resourceCulture);
+            }
+        }
     }
 }

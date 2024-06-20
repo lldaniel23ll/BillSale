@@ -73,7 +73,6 @@ namespace FacturaVenta
             }
             
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if(dataGridView1.SelectedRows.Count > 0)
@@ -139,6 +138,12 @@ namespace FacturaVenta
             txtConcept1.Clear();
             txtQuantity1.Clear();
             txtPrice1.Clear();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            Report report = new Report();
+            report.Show();
         }
     }
 }

@@ -71,5 +71,18 @@ namespace FacturaVenta
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
         }
+        public DataTable Search(string No)
+        {
+            cmd.Connection = connection.openConnection();
+            cmd.CommandText = "SearchSales";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@No", No);
+
+            read = cmd.ExecuteReader();
+            table.Load(read);
+            cmd.Parameters.Clear();
+            connection.closeConnection();
+            return table;
+        }
     }
 }
