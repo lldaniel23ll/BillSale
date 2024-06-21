@@ -23,6 +23,10 @@
         .full-width {
             width: 100%;
         }
+
+        .size {
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -33,7 +37,7 @@
             <td style="width: 50%;" align="center">
                 <table>
                     <tr>
-                        <td align="center">ALMACEN DE ACCESORIOS</td>
+                        <td align="center" class="size">ALMACEN DE ACCESORIOS</td>
                     </tr>
                     <tr>
                         <td align="center">SE VENDE DE TODO</td>
@@ -92,9 +96,9 @@
                                 <tbody>
                                     @FILA
                                     <tr>
-                                        <td style="border: 0px !important;"></td>
-                                        <td style="border: 0px !important;"></td>
-                                        <td align="center">TOTAL</td>
+                                        <td align="center">@CANTIDAD</td>
+                                        <td style="border-bottom: 1px solid #000 !important;"></td>
+                                        <td style="border-bottom: 1px solid #000 !important;"></td>
                                         <td align="center">@TOTAL</td>
                                     </tr>
                                 </tbody>

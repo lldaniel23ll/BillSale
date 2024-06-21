@@ -34,21 +34,36 @@ namespace FacturaVenta
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = "Factura numero " + textBox1.Text + ".pdf";
             saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
-            saveFileDialog.ShowDialog();
 
             string client = string.Empty;
             string address = string.Empty;
             string fullDate = string.Empty;
             string number = string.Empty;
             string state = string.Empty;
+            string formattedDate = string.Empty;
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells["Cliente"].Value != null)
                 client = dataGridView1.Rows[0].Cells["Cliente"].Value.ToString();
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells["Direccion"].Value != null)
                 address = dataGridView1.Rows[0].Cells["Direccion"].Value.ToString();
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells["Fecha"].Value != null)
+            {
                 fullDate = dataGridView1.Rows[0].Cells["Fecha"].Value.ToString();
-            //DateTime hourDate = DateTime.ParseExact(fullDate, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-            //string formatedDate = hourDate.ToString("dd/MM/yyyy");
+
+                string[] hourdate = fullDate.Split(' ');
+                string date = hourdate[0];
+
+                formattedDate = date;
+
+                if (!formattedDate.Contains("/"))
+                {
+                    string[] dateSpliit = date.Split('/');
+                    string day = dateSpliit[0];
+                    string month = dateSpliit[1];
+                    string year = dateSpliit[2];
+
+                    formattedDate = day + "/" + month + "/" + year;
+                }
+            }
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells["No"].Value != null)
                 number = dataGridView1.Rows[0].Cells["No"].Value.ToString();
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells["Estado"].Value != null)
@@ -56,6 +71,7 @@ namespace FacturaVenta
 
             string rows = string.Empty;
             decimal total = 0;
+            decimal quantity = 0;
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -65,6 +81,7 @@ namespace FacturaVenta
                 rows += "<td>" + row.Cells["Precio"].Value.ToString() + "</td>";
                 rows += "<td>" + row.Cells["Total"].Value.ToString() + "</td>";
                 rows += "</tr>";
+                quantity += decimal.Parse(row.Cells["Cantidad"].Value.ToString());
                 total += decimal.Parse(row.Cells["Total"].Value.ToString());
             }
 
@@ -73,10 +90,11 @@ namespace FacturaVenta
             HTML = HTML.Replace("@CLIENTE", client);
             HTML = HTML.Replace("@DIRECCION", address);
             HTML = HTML.Replace("@CODIGO", number);
-            HTML = HTML.Replace("@FECHA", fullDate);
+            HTML = HTML.Replace("@FECHA", formattedDate);
             HTML = HTML.Replace("@ESTADO", state);
 
             HTML = HTML.Replace("@FILA", rows);
+            HTML = HTML.Replace("@CANTIDAD", quantity.ToString());
             HTML = HTML.Replace("@TOTAL", total.ToString());
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
