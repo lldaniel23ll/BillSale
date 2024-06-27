@@ -71,26 +71,44 @@ namespace FacturaVenta.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LOGO_removebg {
+            get {
+                object obj = ResourceManager.GetObject("LOGO_removebg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
-        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;html&gt;
         ///
         ///&lt;head&gt;
-        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
-        ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-        ///    &lt;title&gt;Tabla de factura de ventas&lt;/title&gt;
+        ///    &lt;title&gt;Document&lt;/title&gt;
         ///    &lt;style&gt;
-        ///        /* Estilo del encabezado de la tabla */
-        ///        th {
-        ///            background-color: #f0f0f0;
-        ///            font-weight: bold;
+        ///        table.border th {
+        ///            padding: 5px;
+        ///            border: 1px solid black;
         ///        }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
         ///
-        ///&lt;body&gt;
-        ///    &lt;table style=&quot;width:100%; border-collapse: collapse;&quot;&gt;
-        ///        &lt;tr&gt;
-        ///            &lt;td style=&quot;text-align:center; border:  [resto de la cadena truncado]&quot;;.
+        ///        table.border td {
+        ///            padding: 5px;
+        ///            border: 1px solid black;
+        ///            text-align: center;
+        ///        }
+        ///
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///            width: 100%;
+        ///        }
+        ///
+        ///        .full-width {
+        ///            width: 100%;
+        ///        }
+        ///
+        ///        .size {
+        ///           [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string pdf {
             get {

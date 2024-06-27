@@ -62,6 +62,7 @@
             this.btnExcel.TabIndex = 5;
             this.btnExcel.Text = "Exportar a Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnPDF
             // 
@@ -123,6 +124,7 @@
             this.MaximizeBox = false;
             this.Name = "Report";
             this.Text = "Report";
+            this.Load += new System.EventHandler(this.Report_Load);
             this.pnlContainer.ResumeLayout(false);
             this.pnlContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

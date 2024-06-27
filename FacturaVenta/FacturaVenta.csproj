@@ -108,5 +108,8 @@
   <ItemGroup>
     <None Include="Resources\pdf.html" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGO-removebg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

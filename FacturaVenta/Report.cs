@@ -22,11 +22,17 @@ namespace FacturaVenta
         {
             InitializeComponent();
         }
-
+        private void Report_Load(object sender, EventArgs e)
+        {
+            btnPDF.Enabled = false;
+            btnExcel.Enabled = false;
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             CB_Sales objectCB = new CB_Sales();
             dataGridView1.DataSource = objectCB.searchSales(textBox1.Text);
+            btnPDF.Enabled = true;
+            btnExcel.Enabled = true;
         }
 
         private void btnPDF_Click(object sender, EventArgs e)
@@ -106,7 +112,7 @@ namespace FacturaVenta
                     pdfDoc.Open();
                     pdfDoc.Add(new Phrase(""));
 
-                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(Properties.Resources.LOGO, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(Properties.Resources.LOGO_removebg, System.Drawing.Imaging.ImageFormat.Png);
                     image.ScaleToFit(80, 60);
                     image.Alignment = iTextSharp.text.Image.UNDERLYING;
                     image.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
@@ -120,6 +126,10 @@ namespace FacturaVenta
                     stream.Close();
                 }
             }
+        }
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
