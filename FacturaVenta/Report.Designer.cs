@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Report));
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnPDF = new System.Windows.Forms.Button();
@@ -52,14 +53,14 @@
             this.pnlContainer.Location = new System.Drawing.Point(0, 0);
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(1070, 443);
-            this.pnlContainer.TabIndex = 0;
+            this.pnlContainer.TabIndex = 5;
             // 
             // btnExcel
             // 
             this.btnExcel.Location = new System.Drawing.Point(595, 110);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(134, 37);
-            this.btnExcel.TabIndex = 5;
+            this.btnExcel.TabIndex = 4;
             this.btnExcel.Text = "Exportar a Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
@@ -69,7 +70,7 @@
             this.btnPDF.Location = new System.Drawing.Point(423, 110);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(134, 37);
-            this.btnPDF.TabIndex = 4;
+            this.btnPDF.TabIndex = 3;
             this.btnPDF.Text = "Exportar a PDF";
             this.btnPDF.UseVisualStyleBackColor = true;
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
@@ -79,7 +80,7 @@
             this.btnSearch.Location = new System.Drawing.Point(581, 71);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 3;
+            this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -89,7 +90,7 @@
             this.textBox1.Location = new System.Drawing.Point(467, 73);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.TabIndex = 1;
             // 
             // label1
             // 
@@ -98,13 +99,14 @@
             this.label1.Location = new System.Drawing.Point(464, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(192, 15);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Ingrese el numero de factura";
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -112,7 +114,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1070, 245);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 6;
             // 
             // Report
             // 
@@ -121,6 +123,7 @@
             this.ClientSize = new System.Drawing.Size(1070, 443);
             this.Controls.Add(this.pnlContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Report";
             this.Text = "Report";

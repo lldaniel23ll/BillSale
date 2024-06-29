@@ -12,6 +12,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using System.IO;
 using System.Globalization;
+using SpreadsheetLight;
 
 namespace FacturaVenta
 {
@@ -24,6 +25,7 @@ namespace FacturaVenta
         }
         private void Report_Load(object sender, EventArgs e)
         {
+            textBox1.Focus();
             btnPDF.Enabled = false;
             btnExcel.Enabled = false;
         }
@@ -124,12 +126,43 @@ namespace FacturaVenta
                     }
                     pdfDoc.Close();
                     stream.Close();
+                    textBox1.Clear();
+                    textBox1.Focus();
                 }
             }
         }
         private void btnExcel_Click(object sender, EventArgs e)
         {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "Factura numero " + textBox1.Text + ".xlsx";
+            saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
 
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                SLDocument sl = new SLDocument();
+                SLStyle style = new SLStyle();
+                style.Font.Bold = true;
+
+                int IC = 0;
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    sl.SetCellValue(1, IC, column.HeaderText.ToString());
+                    sl.SetCellStyle(1, IC, style);
+                    IC++;
+                }
+
+                int IR = 2;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    for (int i = 1; i <= 9; i++)
+                    {
+                        sl.SetCellValue(IR, i, row.Cells[i].Value.ToString());
+                    }
+                    IR++;
+                }
+
+                sl.SaveAs(saveFileDialog.FileName);
+            }
         }
     }
 }

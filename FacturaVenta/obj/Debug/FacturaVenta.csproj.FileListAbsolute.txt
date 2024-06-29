@@ -35,3 +35,10 @@ C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\itextsharp.xmlworker
 C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\BouncyCastle.Cryptography.xml
 C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\itextsharp.xml
 C:\Users\danij\source\repos\BillSale\FacturaVenta\obj\Debug\FacturaV.FD043D26.Up2Date
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\SpreadsheetLight.dll
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\System.Drawing.Common.dll
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\System.IO.Packaging.dll
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\SpreadsheetLight.xml
+C:\Users\danij\source\repos\BillSale\FacturaVenta\bin\Debug\System.IO.Packaging.xml
