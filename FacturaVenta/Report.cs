@@ -13,6 +13,7 @@ using iTextSharp.tool.xml;
 using System.IO;
 using System.Globalization;
 using SpreadsheetLight;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace FacturaVenta
 {
@@ -128,40 +129,172 @@ namespace FacturaVenta
                     stream.Close();
                     textBox1.Clear();
                     textBox1.Focus();
+                    MessageBox.Show("Datos exportados exitosamente!");
                 }
             }
         }
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "Factura numero " + textBox1.Text + ".xlsx";
-            saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (dataGridView1.Rows.Count > 0)
             {
-                SLDocument sl = new SLDocument();
-                SLStyle style = new SLStyle();
-                style.Font.Bold = true;
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "Factura numero " + textBox1.Text + ".xlsx";
+                saveFileDialog.Filter = "Excel Files|*.xlsx";
 
-                int IC = 0;
-                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    sl.SetCellValue(1, IC, column.HeaderText.ToString());
-                    sl.SetCellStyle(1, IC, style);
-                    IC++;
-                }
+                    SLDocument sl = new SLDocument();
+                    SLStyle style = new SLStyle();
+                    style.Font.Bold = true;
 
-                int IR = 2;
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    for (int i = 1; i <= 9; i++)
+                    // Define border and centered style
+                    SLStyle borderCenteredStyle = new SLStyle();
+                    borderCenteredStyle.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
+                    borderCenteredStyle.Border.RightBorder.BorderStyle = BorderStyleValues.Thin;
+                    borderCenteredStyle.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
+                    borderCenteredStyle.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
+                    borderCenteredStyle.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+                    borderCenteredStyle.Alignment.Vertical = VerticalAlignmentValues.Center;
+
+                    // Define style for wrapping text
+                    SLStyle wrapTextStyle = new SLStyle();
+                    wrapTextStyle.SetWrapText(true);
+                    wrapTextStyle.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
+                    wrapTextStyle.Border.RightBorder.BorderStyle = BorderStyleValues.Thin;
+                    wrapTextStyle.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
+                    wrapTextStyle.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
+                    wrapTextStyle.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+                    wrapTextStyle.Alignment.Vertical = VerticalAlignmentValues.Center;
+
+                    // Set column headers
+                    sl.SetCellValue(1, 1, "No");
+                    sl.SetCellValue(1, 2, "Cliente");
+                    sl.SetCellValue(1, 3, "Dirección");
+                    sl.SetCellValue(1, 4, "Concepto");
+                    sl.SetCellValue(1, 5, "Fecha");
+                    sl.SetCellValue(1, 6, "Estado");
+                    sl.SetCellValue(1, 7, "Precio");
+                    sl.SetCellValue(1, 8, "Cantidad");
+                    sl.SetCellValue(1, 9, "Total");
+
+                    // Apply bold, border, and centered style to headers
+                    for (int col = 1; col <= 9; col++)
                     {
-                        sl.SetCellValue(IR, i, row.Cells[i].Value.ToString());
+                        sl.SetCellStyle(1, col, style);
+                        sl.SetCellStyle(1, col, borderCenteredStyle);
                     }
-                    IR++;
-                }
 
-                sl.SaveAs(saveFileDialog.FileName);
+                    // Set column widths
+                    sl.SetColumnWidth(2, 20); // Cliente
+                    sl.SetColumnWidth(3, 20); // Dirección
+                    sl.SetColumnWidth(4, 20); // Concepto
+                    sl.SetColumnWidth(5, 12); // Fecha
+
+                    int rowIndex = 2; // Start at row 2 for data
+                    double totalCantidad = 0; // Variable to hold the sum of Cantidad
+                    double totalTotal = 0; // Variable to hold the sum of Total
+
+                    // Loop through each row in the DataGridView
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.Cells["No"].Value != null)
+                            sl.SetCellValue(rowIndex, 1, row.Cells["No"].Value.ToString());
+
+                        if (row.Cells["Cliente"].Value != null)
+                            sl.SetCellValue(rowIndex, 2, row.Cells["Cliente"].Value.ToString());
+
+                        if (row.Cells["Direccion"].Value != null)
+                            sl.SetCellValue(rowIndex, 3, row.Cells["Direccion"].Value.ToString());
+
+                        if (row.Cells["Concepto"].Value != null)
+                            sl.SetCellValue(rowIndex, 4, row.Cells["Concepto"].Value.ToString());
+
+                        if (row.Cells["Fecha"].Value != null)
+                        {
+                            string fullDate = row.Cells["Fecha"].Value.ToString();
+                            string[] hourdate = fullDate.Split(' ');
+                            string date = hourdate[0];
+                            string formattedDate = date.Contains("/") ? date : $"{date.Split('/')[0]}/{date.Split('/')[1]}/{date.Split('/')[2]}";
+                            sl.SetCellValue(rowIndex, 5, formattedDate);
+                        }
+
+                        if (row.Cells["Estado"].Value != null)
+                            sl.SetCellValue(rowIndex, 6, row.Cells["Estado"].Value.ToString());
+
+                        if (row.Cells["Precio"].Value != null)
+                            sl.SetCellValue(rowIndex, 7, row.Cells["Precio"].Value.ToString());
+
+                        if (row.Cells["Cantidad"].Value != null)
+                        {
+                            double cantidad;
+                            if (double.TryParse(row.Cells["Cantidad"].Value.ToString(), out cantidad))
+                            {
+                                sl.SetCellValue(rowIndex, 8, cantidad);
+                                totalCantidad += cantidad; // Sum the Cantidad values
+                            }
+                        }
+
+                        if (row.Cells["Total"].Value != null)
+                        {
+                            double total;
+                            if (double.TryParse(row.Cells["Total"].Value.ToString(), out total))
+                            {
+                                sl.SetCellValue(rowIndex, 9, total);
+                                totalTotal += total; // Sum the Total values
+                            }
+                        }
+
+                        // Apply border and centered style to each cell in the current row
+                        for (int col = 1; col <= 9; col++)
+                        {
+                            if (col == 2 || col == 3 || col == 4) // Apply wrap text style to specific columns
+                            {
+                                sl.SetCellStyle(rowIndex, col, wrapTextStyle);
+                            }
+                            else
+                            {
+                                sl.SetCellStyle(rowIndex, col, borderCenteredStyle);
+                            }
+                        }
+
+                        rowIndex++;
+                    }
+
+                    // Write the total Cantidad and Total values to a new row
+                    SLStyle totalStyle = new SLStyle();
+                    totalStyle.Font.Bold = true;
+                    totalStyle.Font.FontColor = System.Drawing.Color.Black;
+                    totalStyle.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.Yellow, System.Drawing.Color.Yellow);
+                    totalStyle.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+                    totalStyle.Alignment.Vertical = VerticalAlignmentValues.Center;
+                    totalStyle.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
+                    totalStyle.Border.RightBorder.BorderStyle = BorderStyleValues.Thin;
+                    totalStyle.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
+                    totalStyle.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
+
+                    int totalRowIndex = rowIndex; // Index of the total row
+                    sl.MergeWorksheetCells(totalRowIndex, 1, totalRowIndex, 7); // Merge cells from A to G
+                    sl.SetCellValue(totalRowIndex, 1, "Total");
+                    sl.SetCellValue(totalRowIndex, 8, totalCantidad);
+                    sl.SetCellValue(totalRowIndex, 9, totalTotal);
+                    sl.SetCellStyle(totalRowIndex, 1, totalStyle);
+                    sl.SetCellStyle(totalRowIndex, 8, totalStyle);
+                    sl.SetCellStyle(totalRowIndex, 9, totalStyle);
+
+                    // Apply border and centered style to the merged cells
+                    for (int col = 1; col <= 7; col++)
+                    {
+                        sl.SetCellStyle(totalRowIndex, col, totalStyle);
+                    }
+
+                    // Save the Excel file
+                    sl.SaveAs(saveFileDialog.FileName);
+                    MessageBox.Show("Datos exportados exitosamente!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para exportar.");
             }
         }
     }
