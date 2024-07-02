@@ -14,6 +14,8 @@ using System.IO;
 using System.Globalization;
 using SpreadsheetLight;
 using DocumentFormat.OpenXml.Spreadsheet;
+using System.IO;
+using SpreadsheetLight.Drawing;
 
 namespace FacturaVenta
 {
@@ -144,10 +146,64 @@ namespace FacturaVenta
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     SLDocument sl = new SLDocument();
+
+                    // Ruta relativa del logo
+                    string rutaImagen = System.IO.Directory.GetCurrentDirectory() + @"\LOGO-removebg.png";
+
+                    // Insertar la imagen del logo
+                    SLPicture logoPic = new SLPicture(rutaImagen);
+                    logoPic.SetPosition(0, 0);
+                    sl.MergeWorksheetCells("A1", "B1");
+                    sl.InsertPicture(logoPic);
+                    sl.SetRowHeight(1, 60);
+
+                    // Crear y aplicar estilo para centrar el texto
+                    SLStyle centeredStyle = new SLStyle();
+                    centeredStyle.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+                    centeredStyle.Alignment.Vertical = VerticalAlignmentValues.Center;
+
+                    // Crear estilo de borde
+                    SLStyle borderStyle = new SLStyle();
+                    borderStyle.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
+                    borderStyle.Border.RightBorder.BorderStyle = BorderStyleValues.Thin;
+                    borderStyle.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
+                    borderStyle.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
+
+                    // Crear estilo de fondo naranja
+                    SLStyle orangeBackgroundStyle = new SLStyle();
+                    orangeBackgroundStyle.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.Orange, System.Drawing.Color.Orange);
+
+                    // Aplicar el estilo de fondo naranja, borde y centrado a las celdas combinadas y adyacentes
+                    for (int col = 1; col <= 9; col++)
+                    {
+                        sl.SetCellStyle(1, col, orangeBackgroundStyle);
+                        sl.SetCellStyle(1, col, borderStyle);
+                        sl.SetCellStyle(1, col, centeredStyle);
+                    }
+
+                    // Combinar celdas C1 a I1 y establecer el texto
+                    sl.MergeWorksheetCells("C1", "I1");
+                    sl.SetCellValue("C1", "ALMACEN DE ACCESORIOS");
+
+                    // Crear estilo para texto en negrita y tamaño 20
+                    SLStyle headerStyle = new SLStyle();
+                    headerStyle.Font.FontSize = 20;
+                    headerStyle.Font.Bold = true;
+                    headerStyle.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+                    headerStyle.Alignment.Vertical = VerticalAlignmentValues.Center;
+                    headerStyle.Fill.SetPattern(PatternValues.Solid, System.Drawing.Color.Orange, System.Drawing.Color.Orange);
+                    headerStyle.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
+                    headerStyle.Border.RightBorder.BorderStyle = BorderStyleValues.Thin;
+                    headerStyle.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
+                    headerStyle.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
+
+                    // Aplicar el estilo a la celda combinada C1 a I1
+                    sl.SetCellStyle("C1", headerStyle);
+
                     SLStyle style = new SLStyle();
                     style.Font.Bold = true;
 
-                    // Define border and centered style
+                    // Estilo de borde y centrado
                     SLStyle borderCenteredStyle = new SLStyle();
                     borderCenteredStyle.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
                     borderCenteredStyle.Border.RightBorder.BorderStyle = BorderStyleValues.Thin;
@@ -156,7 +212,7 @@ namespace FacturaVenta
                     borderCenteredStyle.Alignment.Horizontal = HorizontalAlignmentValues.Center;
                     borderCenteredStyle.Alignment.Vertical = VerticalAlignmentValues.Center;
 
-                    // Define style for wrapping text
+                    // Estilo para el texto con ajuste
                     SLStyle wrapTextStyle = new SLStyle();
                     wrapTextStyle.SetWrapText(true);
                     wrapTextStyle.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
@@ -166,35 +222,35 @@ namespace FacturaVenta
                     wrapTextStyle.Alignment.Horizontal = HorizontalAlignmentValues.Center;
                     wrapTextStyle.Alignment.Vertical = VerticalAlignmentValues.Center;
 
-                    // Set column headers
-                    sl.SetCellValue(1, 1, "No");
-                    sl.SetCellValue(1, 2, "Cliente");
-                    sl.SetCellValue(1, 3, "Dirección");
-                    sl.SetCellValue(1, 4, "Concepto");
-                    sl.SetCellValue(1, 5, "Fecha");
-                    sl.SetCellValue(1, 6, "Estado");
-                    sl.SetCellValue(1, 7, "Precio");
-                    sl.SetCellValue(1, 8, "Cantidad");
-                    sl.SetCellValue(1, 9, "Total");
+                    // Encabezados de columna (en la fila 2)
+                    sl.SetCellValue(2, 1, "No");
+                    sl.SetCellValue(2, 2, "Cliente");
+                    sl.SetCellValue(2, 3, "Dirección");
+                    sl.SetCellValue(2, 4, "Concepto");
+                    sl.SetCellValue(2, 5, "Fecha");
+                    sl.SetCellValue(2, 6, "Estado");
+                    sl.SetCellValue(2, 7, "Precio");
+                    sl.SetCellValue(2, 8, "Cantidad");
+                    sl.SetCellValue(2, 9, "Total");
 
-                    // Apply bold, border, and centered style to headers
+                    // Aplicar estilos a los encabezados
                     for (int col = 1; col <= 9; col++)
                     {
-                        sl.SetCellStyle(1, col, style);
-                        sl.SetCellStyle(1, col, borderCenteredStyle);
+                        sl.SetCellStyle(2, col, style);
+                        sl.SetCellStyle(2, col, borderCenteredStyle);
                     }
 
-                    // Set column widths
+                    // Ajustar el ancho de las columnas
                     sl.SetColumnWidth(2, 20); // Cliente
                     sl.SetColumnWidth(3, 20); // Dirección
                     sl.SetColumnWidth(4, 20); // Concepto
                     sl.SetColumnWidth(5, 12); // Fecha
 
-                    int rowIndex = 2; // Start at row 2 for data
-                    double totalCantidad = 0; // Variable to hold the sum of Cantidad
-                    double totalTotal = 0; // Variable to hold the sum of Total
+                    int rowIndex = 3; // Comenzar en la fila 3 para los datos
+                    double totalCantidad = 0; // Variable para la suma de Cantidad
+                    double totalTotal = 0; // Variable para la suma de Total
 
-                    // Loop through each row in the DataGridView
+                    // Recorrer cada fila en el DataGridView
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
                         if (row.Cells["No"].Value != null)
@@ -226,28 +282,26 @@ namespace FacturaVenta
 
                         if (row.Cells["Cantidad"].Value != null)
                         {
-                            double cantidad;
-                            if (double.TryParse(row.Cells["Cantidad"].Value.ToString(), out cantidad))
+                            if (double.TryParse(row.Cells["Cantidad"].Value.ToString(), out double cantidad))
                             {
                                 sl.SetCellValue(rowIndex, 8, cantidad);
-                                totalCantidad += cantidad; // Sum the Cantidad values
+                                totalCantidad += cantidad; // Sumar los valores de Cantidad
                             }
                         }
 
                         if (row.Cells["Total"].Value != null)
                         {
-                            double total;
-                            if (double.TryParse(row.Cells["Total"].Value.ToString(), out total))
+                            if (double.TryParse(row.Cells["Total"].Value.ToString(), out double total))
                             {
                                 sl.SetCellValue(rowIndex, 9, total);
-                                totalTotal += total; // Sum the Total values
+                                totalTotal += total; // Sumar los valores de Total
                             }
                         }
 
-                        // Apply border and centered style to each cell in the current row
+                        // Aplicar estilo a cada celda en la fila actual
                         for (int col = 1; col <= 9; col++)
                         {
-                            if (col == 2 || col == 3 || col == 4) // Apply wrap text style to specific columns
+                            if (col == 2 || col == 3 || col == 4) // Aplicar ajuste de texto a columnas específicas
                             {
                                 sl.SetCellStyle(rowIndex, col, wrapTextStyle);
                             }
@@ -260,7 +314,7 @@ namespace FacturaVenta
                         rowIndex++;
                     }
 
-                    // Write the total Cantidad and Total values to a new row
+                    // Escribir los valores totales de Cantidad y Total en una nueva fila
                     SLStyle totalStyle = new SLStyle();
                     totalStyle.Font.Bold = true;
                     totalStyle.Font.FontColor = System.Drawing.Color.Black;
@@ -272,8 +326,8 @@ namespace FacturaVenta
                     totalStyle.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
                     totalStyle.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
 
-                    int totalRowIndex = rowIndex; // Index of the total row
-                    sl.MergeWorksheetCells(totalRowIndex, 1, totalRowIndex, 7); // Merge cells from A to G
+                    int totalRowIndex = rowIndex; // Índice de la fila total
+                    sl.MergeWorksheetCells(totalRowIndex, 1, totalRowIndex, 7); // Unir celdas de A a G
                     sl.SetCellValue(totalRowIndex, 1, "Total");
                     sl.SetCellValue(totalRowIndex, 8, totalCantidad);
                     sl.SetCellValue(totalRowIndex, 9, totalTotal);
@@ -281,13 +335,13 @@ namespace FacturaVenta
                     sl.SetCellStyle(totalRowIndex, 8, totalStyle);
                     sl.SetCellStyle(totalRowIndex, 9, totalStyle);
 
-                    // Apply border and centered style to the merged cells
+                    // Aplicar estilo a las celdas unidas
                     for (int col = 1; col <= 7; col++)
                     {
                         sl.SetCellStyle(totalRowIndex, col, totalStyle);
                     }
 
-                    // Save the Excel file
+                    // Guardar el archivo Excel
                     sl.SaveAs(saveFileDialog.FileName);
                     MessageBox.Show("Datos exportados exitosamente!");
                 }
@@ -296,6 +350,7 @@ namespace FacturaVenta
             {
                 MessageBox.Show("No hay datos para exportar.");
             }
+
         }
     }
 }
