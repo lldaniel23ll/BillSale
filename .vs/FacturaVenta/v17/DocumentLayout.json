@@ -7,20 +7,12 @@
       "RelativeMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|solutionrelative:facturaventa\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|C:\\Users\\danij\\source\\repos\\BillSale\\facturaventa\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|c:\\users\\danij\\source\\repos\\billsale\\facturaventa\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|solutionrelative:facturaventa\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|C:\\Users\\danij\\source\\repos\\BillSale\\facturaventa\\resources\\pdf.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|solutionrelative:facturaventa\\resources\\pdf.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|C:\\Users\\danij\\source\\repos\\BillSale\\facturaventa\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|solutionrelative:facturaventa\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|C:\\Users\\danij\\source\\repos\\BillSale\\facturaventa\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|solutionrelative:facturaventa\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|c:\\users\\danij\\source\\repos\\billsale\\facturaventa\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1717A65-04C8-4334-8910-A099535A4ABC}|FacturaVenta\\FacturaVenta.csproj|solutionrelative:facturaventa\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,42 +22,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "pdf.html",
-              "DocumentMoniker": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Resources\\pdf.html",
-              "RelativeDocumentMoniker": "FacturaVenta\\Resources\\pdf.html",
-              "ToolTip": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Resources\\pdf.html",
-              "RelativeToolTip": "FacturaVenta\\Resources\\pdf.html",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAAAGIAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-06-28T20:05:33.544Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Form1.cs",
-              "RelativeDocumentMoniker": "FacturaVenta\\Form1.cs",
-              "ToolTip": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Form1.cs",
-              "RelativeToolTip": "FacturaVenta\\Form1.cs",
-              "ViewState": "AQIAAMUAAAAAAAAAAAAWwNQAAAAsAAAA",
+              "DocumentIndex": 0,
+              "Title": "Report.cs",
+              "DocumentMoniker": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Report.cs",
+              "RelativeDocumentMoniker": "FacturaVenta\\Report.cs",
+              "ToolTip": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Report.cs",
+              "RelativeToolTip": "FacturaVenta\\Report.cs",
+              "ViewState": "AQIAAO8AAAAAAAAAAAAAAPoAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T15:58:04.147Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Form1.cs",
-              "RelativeDocumentMoniker": "FacturaVenta\\Form1.cs",
-              "ToolTip": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "FacturaVenta\\Form1.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T15:57:55.893Z"
+              "WhenOpened": "2024-10-22T16:41:13.941Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -76,20 +46,20 @@
               "ToolTip": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Report.cs [Dise\u00F1o]",
               "RelativeToolTip": "FacturaVenta\\Report.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T14:23:21.931Z",
+              "WhenOpened": "2024-10-22T16:41:09.86Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Report.cs",
-              "DocumentMoniker": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Report.cs",
-              "RelativeDocumentMoniker": "FacturaVenta\\Report.cs",
-              "ToolTip": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\Report.cs",
-              "RelativeToolTip": "FacturaVenta\\Report.cs",
-              "ViewState": "AQIAADsBAAAAAAAAAAAAAEUBAAAGAAAA",
+              "DocumentIndex": 2,
+              "Title": "DBConnection.cs",
+              "DocumentMoniker": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\DBConnection.cs",
+              "RelativeDocumentMoniker": "FacturaVenta\\DBConnection.cs",
+              "ToolTip": "C:\\Users\\danij\\source\\repos\\BillSale\\FacturaVenta\\DBConnection.cs",
+              "RelativeToolTip": "FacturaVenta\\DBConnection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T01:17:34.025Z",
+              "WhenOpened": "2024-10-07T18:40:19.364Z",
               "EditorCaption": ""
             }
           ]

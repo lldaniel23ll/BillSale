@@ -148,10 +148,10 @@ namespace FacturaVenta
                     SLDocument sl = new SLDocument();
 
                     // Ruta relativa del logo
-                    string rutaImagen = System.IO.Directory.GetCurrentDirectory() + @"\LOGO-removebg.png";
+                    string path = @"D:\LOGO-removebg.png";
 
                     // Insertar la imagen del logo
-                    SLPicture logoPic = new SLPicture(rutaImagen);
+                    SLPicture logoPic = new SLPicture(path);
                     logoPic.SetPosition(0, 0);
                     sl.MergeWorksheetCells("A1", "B1");
                     sl.InsertPicture(logoPic);
@@ -223,12 +223,12 @@ namespace FacturaVenta
                     wrapTextStyle.Alignment.Vertical = VerticalAlignmentValues.Center;
 
                     // Encabezados de columna (en la fila 2)
-                    sl.SetCellValue(2, 1, "No");
-                    sl.SetCellValue(2, 2, "Cliente");
-                    sl.SetCellValue(2, 3, "Dirección");
-                    sl.SetCellValue(2, 4, "Concepto");
-                    sl.SetCellValue(2, 5, "Fecha");
-                    sl.SetCellValue(2, 6, "Estado");
+                    sl.SetCellValue(2, 1, "Fecha");
+                    sl.SetCellValue(2, 2, "No. Fact");
+                    sl.SetCellValue(2, 3, "Cliente");
+                    sl.SetCellValue(2, 4, "Dirección");
+                    sl.SetCellValue(2, 5, "Concepto");
+                    sl.SetCellValue(2, 6, "Tipo de Factura");
                     sl.SetCellValue(2, 7, "Precio");
                     sl.SetCellValue(2, 8, "Cantidad");
                     sl.SetCellValue(2, 9, "Total");
@@ -241,10 +241,15 @@ namespace FacturaVenta
                     }
 
                     // Ajustar el ancho de las columnas
-                    sl.SetColumnWidth(2, 20); // Cliente
-                    sl.SetColumnWidth(3, 20); // Dirección
-                    sl.SetColumnWidth(4, 20); // Concepto
-                    sl.SetColumnWidth(5, 12); // Fecha
+                    sl.SetColumnWidth(1, 12); // Fecha
+                    sl.SetColumnWidth(2, 9); // No. Fact
+                    sl.SetColumnWidth(3, 20); // Cliente
+                    sl.SetColumnWidth(4, 20); // Dirección
+                    sl.SetColumnWidth(5, 20); // Concepto
+                    sl.SetColumnWidth(6, 15); // Tipo de Factura
+                    sl.SetColumnWidth(7, 10); // Precio
+                    sl.SetColumnWidth(9, 10); // Cantidad
+                    sl.SetColumnWidth(9, 12); // Total
 
                     int rowIndex = 3; // Comenzar en la fila 3 para los datos
                     double totalCantidad = 0; // Variable para la suma de Cantidad
@@ -253,26 +258,26 @@ namespace FacturaVenta
                     // Recorrer cada fila en el DataGridView
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        if (row.Cells["No"].Value != null)
-                            sl.SetCellValue(rowIndex, 1, row.Cells["No"].Value.ToString());
-
-                        if (row.Cells["Cliente"].Value != null)
-                            sl.SetCellValue(rowIndex, 2, row.Cells["Cliente"].Value.ToString());
-
-                        if (row.Cells["Direccion"].Value != null)
-                            sl.SetCellValue(rowIndex, 3, row.Cells["Direccion"].Value.ToString());
-
-                        if (row.Cells["Concepto"].Value != null)
-                            sl.SetCellValue(rowIndex, 4, row.Cells["Concepto"].Value.ToString());
-
                         if (row.Cells["Fecha"].Value != null)
                         {
                             string fullDate = row.Cells["Fecha"].Value.ToString();
                             string[] hourdate = fullDate.Split(' ');
                             string date = hourdate[0];
                             string formattedDate = date.Contains("/") ? date : $"{date.Split('/')[0]}/{date.Split('/')[1]}/{date.Split('/')[2]}";
-                            sl.SetCellValue(rowIndex, 5, formattedDate);
+                            sl.SetCellValue(rowIndex, 1, formattedDate);
                         }
+
+                        if (row.Cells["No"].Value != null)
+                            sl.SetCellValue(rowIndex, 2, row.Cells["No"].Value.ToString());
+
+                        if (row.Cells["Cliente"].Value != null)
+                            sl.SetCellValue(rowIndex, 3, row.Cells["Cliente"].Value.ToString());
+
+                        if (row.Cells["Direccion"].Value != null)
+                            sl.SetCellValue(rowIndex, 4, row.Cells["Direccion"].Value.ToString());
+
+                        if (row.Cells["Concepto"].Value != null)
+                            sl.SetCellValue(rowIndex, 5, row.Cells["Concepto"].Value.ToString());
 
                         if (row.Cells["Estado"].Value != null)
                             sl.SetCellValue(rowIndex, 6, row.Cells["Estado"].Value.ToString());
@@ -301,7 +306,7 @@ namespace FacturaVenta
                         // Aplicar estilo a cada celda en la fila actual
                         for (int col = 1; col <= 9; col++)
                         {
-                            if (col == 2 || col == 3 || col == 4) // Aplicar ajuste de texto a columnas específicas
+                            if (col == 3 || col == 4 || col == 5) // Aplicar ajuste de texto a columnas específicas
                             {
                                 sl.SetCellStyle(rowIndex, col, wrapTextStyle);
                             }
@@ -350,7 +355,7 @@ namespace FacturaVenta
             {
                 MessageBox.Show("No hay datos para exportar.");
             }
-
         }
+
     }
 }
